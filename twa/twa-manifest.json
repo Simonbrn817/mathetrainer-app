@@ -1,0 +1,25 @@
+{
+  "packageId": "com.yourcompany.mathetrainer",
+  "host": "example.com",
+  "name": "MatheTrainer",
+  "launcherName": "MatheTrainer",
+  "display": "standalone",
+  "themeColor": "#2563eb",
+  "navigationColor": "#ffffff",
+  "backgroundColor": "#ffffff",
+  "startUrl": "/",
+  "iconUrl": "https://example.com/icons/icon-512.png",
+  "maskableIconUrl": "https://example.com/icons/icon-maskable-512.png",
+  "monochromeIconUrl": "https://example.com/icons/icon-512.png",
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": false,
+    "cameraDelegation": false,
+    "microphoneDelegation": false,
+    "playBilling": false
+  }
+}
