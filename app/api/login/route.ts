@@ -25,7 +25,6 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
-    clearSetupStorage();
 
     if (!user) {
       return NextResponse.json(

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
@@ -63,7 +63,7 @@ function getDefaultExercises(topic: string, level: 1 | 2 | 3): Exercise[] {
       correctAnswer: "13",
       explanation: "6 + 7 = 13.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
     {
       id: `${topic}-2`,
@@ -72,7 +72,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "7",
       explanation: "15 - 8 = 7.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
     {
       id: `${topic}-3`,
@@ -81,7 +81,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "20",
       explanation: "4 mal 5 ergibt 20.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
     {
       id: `${topic}-4`,
@@ -90,7 +90,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "6",
       explanation: "18 geteilt durch 3 ergibt 6.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
   ];
 
@@ -102,7 +102,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "8",
       explanation: "17 - 9 = 8.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
     {
       id: `${topic}-2`,
@@ -111,7 +111,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "12",
       explanation: "16 / 4 = 4, dann 4 × 3 = 12.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
     {
       id: `${topic}-3`,
@@ -120,7 +120,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "25%",
       explanation: "0,25 = 25%.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
     {
       id: `${topic}-4`,
@@ -129,7 +129,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "16 cm",
       explanation: "2 × (5 + 3) = 16.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
   ];
 
@@ -141,7 +141,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "6",
       explanation: "2x = 12, also x = 6.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
     {
       id: `${topic}-2`,
@@ -150,7 +150,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "75%",
       explanation: "18 / 24 = 0,75 = 75%.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
     {
       id: `${topic}-3`,
@@ -159,7 +159,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "12",
       explanation: "1,5 mal 8 ergibt 12.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
     {
       id: `${topic}-4`,
@@ -168,7 +168,7 @@ rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz 
       correctAnswer: "7 cm",
       explanation: "√49 = 7.",
       mistakeTip: "Achte darauf, Rechenzeichen und Reihenfolge nicht zu verwechseln.",
-rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
+      rememberTip: "Rechne Schritt für Schritt und prüfe dein Ergebnis am Ende kurz nach.",
     },
   ];
 
@@ -188,16 +188,14 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
           question: "Was ist 27 + 15?",
           options: ["40", "41", "42", "43"],
           correctAnswer: "42",
-          explanation:
-            "27 + 15 = 42. Rechne erst 27 + 10 = 37 und dann + 5 = 42.",
+          explanation: "27 + 15 = 42. Rechne erst 27 + 10 = 37 und dann + 5 = 42.",
         },
         {
           id: `${topic}-2`,
           question: "Was ist 63 - 28?",
           options: ["33", "34", "35", "36"],
           correctAnswer: "35",
-          explanation:
-            "63 - 28 = 35. Du kannst zuerst 63 - 20 und dann - 8 rechnen.",
+          explanation: "63 - 28 = 35. Du kannst zuerst 63 - 20 und dann - 8 rechnen.",
         },
         {
           id: `${topic}-3`,
@@ -223,32 +221,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
           question: "Löse: x + 18 = 46",
           options: ["26", "27", "28", "29"],
           correctAnswer: "28",
-          explanation:
-            "Du rechnest 46 - 18. So erhältst du x = 28.",
+          explanation: "Du rechnest 46 - 18. So erhältst du x = 28.",
         },
         {
           id: `${topic}-2`,
           question: "Löse: 72 - x = 19",
           options: ["51", "52", "53", "54"],
           correctAnswer: "53",
-          explanation:
-            "72 - 53 = 19. Also ist x = 53.",
+          explanation: "72 - 53 = 19. Also ist x = 53.",
         },
         {
           id: `${topic}-3`,
           question: "Was ist 238 + 167?",
           options: ["395", "405", "415", "425"],
           correctAnswer: "405",
-          explanation:
-            "238 + 167 = 405.",
+          explanation: "238 + 167 = 405.",
         },
         {
           id: `${topic}-4`,
           question: "Was ist 500 - 286?",
           options: ["204", "214", "224", "234"],
           correctAnswer: "214",
-          explanation:
-            "500 - 286 = 214.",
+          explanation: "500 - 286 = 214.",
         },
       ];
     }
@@ -259,32 +253,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
         question: "Ein Konto hat 240 €. Es werden 85 € eingezahlt und dann 49 € abgehoben. Wie viel bleibt?",
         options: ["266 €", "276 €", "286 €", "296 €"],
         correctAnswer: "276 €",
-        explanation:
-          "240 + 85 = 325, danach 325 - 49 = 276.",
+        explanation: "240 + 85 = 325, danach 325 - 49 = 276.",
       },
       {
         id: `${topic}-2`,
         question: "Löse: 3x + 14 = 50",
         options: ["10", "11", "12", "13"],
         correctAnswer: "12",
-        explanation:
-          "Erst 14 abziehen: 36. Dann durch 3 teilen: x = 12.",
+        explanation: "Erst 14 abziehen: 36. Dann durch 3 teilen: x = 12.",
       },
       {
         id: `${topic}-3`,
         question: "Was ist 1.200 - 478?",
         options: ["712", "722", "732", "742"],
         correctAnswer: "722",
-        explanation:
-          "1.200 - 478 = 722.",
+        explanation: "1.200 - 478 = 722.",
       },
       {
         id: `${topic}-4`,
         question: "Löse: 2x - 9 = 35",
         options: ["20", "21", "22", "23"],
         correctAnswer: "22",
-        explanation:
-          "9 addieren ergibt 44, dann durch 2 teilen: x = 22.",
+        explanation: "9 addieren ergibt 44, dann durch 2 teilen: x = 22.",
       },
     ];
   }
@@ -330,32 +320,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
           question: "Was ist 14 × 6?",
           options: ["72", "84", "96", "106"],
           correctAnswer: "84",
-          explanation:
-            "14 mal 6 = 84.",
+          explanation: "14 mal 6 = 84.",
         },
         {
           id: `${topic}-2`,
           question: "Was ist 96 : 8?",
           options: ["11", "12", "13", "14"],
           correctAnswer: "12",
-          explanation:
-            "96 geteilt durch 8 ergibt 12.",
+          explanation: "96 geteilt durch 8 ergibt 12.",
         },
         {
           id: `${topic}-3`,
           question: "Löse: 7x = 56",
           options: ["6", "7", "8", "9"],
           correctAnswer: "8",
-          explanation:
-            "Beide Seiten durch 7 teilen: x = 8.",
+          explanation: "Beide Seiten durch 7 teilen: x = 8.",
         },
         {
           id: `${topic}-4`,
           question: "Was ist 125 : 5?",
           options: ["15", "20", "25", "30"],
           correctAnswer: "25",
-          explanation:
-            "125 geteilt durch 5 = 25.",
+          explanation: "125 geteilt durch 5 = 25.",
         },
       ];
     }
@@ -366,32 +352,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
         question: "Was ist 18 × 12?",
         options: ["196", "206", "216", "226"],
         correctAnswer: "216",
-        explanation:
-          "18 × 12 = 216.",
+        explanation: "18 × 12 = 216.",
       },
       {
         id: `${topic}-2`,
         question: "Was ist 144 : 12?",
         options: ["11", "12", "13", "14"],
         correctAnswer: "12",
-        explanation:
-          "144 geteilt durch 12 = 12.",
+        explanation: "144 geteilt durch 12 = 12.",
       },
       {
         id: `${topic}-3`,
         question: "Ein Ticket kostet 7 €. Wie viel kosten 18 Tickets?",
         options: ["116 €", "126 €", "136 €", "146 €"],
         correctAnswer: "126 €",
-        explanation:
-          "18 × 7 = 126.",
+        explanation: "18 × 7 = 126.",
       },
       {
         id: `${topic}-4`,
         question: "Löse: 84 = 12x",
         options: ["5", "6", "7", "8"],
         correctAnswer: "7",
-        explanation:
-          "84 durch 12 ergibt 7.",
+        explanation: "84 durch 12 ergibt 7.",
       },
     ];
   }
@@ -404,32 +386,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
           question: "Welcher Bruch ist gleich 1/2?",
           options: ["2/3", "2/4", "3/5", "4/10"],
           correctAnswer: "2/4",
-          explanation:
-            "2/4 lässt sich zu 1/2 kürzen.",
+          explanation: "2/4 lässt sich zu 1/2 kürzen.",
         },
         {
           id: `${topic}-2`,
           question: "Was ist größer?",
           options: ["1/4", "1/2", "gleich groß", "nicht bestimmbar"],
           correctAnswer: "1/2",
-          explanation:
-            "Ein Halb ist größer als ein Viertel.",
+          explanation: "Ein Halb ist größer als ein Viertel.",
         },
         {
           id: `${topic}-3`,
           question: "Wie viel ist 1/4 von 20?",
           options: ["4", "5", "6", "7"],
           correctAnswer: "5",
-          explanation:
-            "20 durch 4 = 5.",
+          explanation: "20 durch 4 = 5.",
         },
         {
           id: `${topic}-4`,
           question: "Welcher Bruch ist am größten?",
           options: ["1/3", "1/2", "1/4", "1/5"],
           correctAnswer: "1/2",
-          explanation:
-            "Von diesen Stammbrüchen ist 1/2 am größten.",
+          explanation: "Von diesen Stammbrüchen ist 1/2 am größten.",
         },
       ];
     }
@@ -441,32 +419,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
           question: "Was ist 2/3 von 12?",
           options: ["6", "8", "9", "10"],
           correctAnswer: "8",
-          explanation:
-            "12 durch 3 = 4, dann 4 × 2 = 8.",
+          explanation: "12 durch 3 = 4, dann 4 × 2 = 8.",
         },
         {
           id: `${topic}-2`,
           question: "Welcher Bruch ist gleich 3/6?",
           options: ["1/2", "1/3", "2/3", "3/4"],
           correctAnswer: "1/2",
-          explanation:
-            "3/6 gekürzt ergibt 1/2.",
+          explanation: "3/6 gekürzt ergibt 1/2.",
         },
         {
           id: `${topic}-3`,
           question: "Was ist 1/2 + 1/4?",
           options: ["2/4", "3/4", "4/6", "1"],
           correctAnswer: "3/4",
-          explanation:
-            "1/2 = 2/4, also 2/4 + 1/4 = 3/4.",
+          explanation: "1/2 = 2/4, also 2/4 + 1/4 = 3/4.",
         },
         {
           id: `${topic}-4`,
           question: "Was ist 3/4 von 20?",
           options: ["12", "14", "15", "16"],
           correctAnswer: "15",
-          explanation:
-            "20 durch 4 = 5, dann 5 × 3 = 15.",
+          explanation: "20 durch 4 = 5, dann 5 × 3 = 15.",
         },
       ];
     }
@@ -477,32 +451,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
         question: "Was ist 2/5 + 1/5?",
         options: ["2/10", "3/5", "3/10", "1/5"],
         correctAnswer: "3/5",
-        explanation:
-          "Gleicher Nenner: Zähler addieren. 2/5 + 1/5 = 3/5.",
+        explanation: "Gleicher Nenner: Zähler addieren. 2/5 + 1/5 = 3/5.",
       },
       {
         id: `${topic}-2`,
         question: "Was ist 3/4 - 1/8?",
         options: ["1/2", "5/8", "6/8", "7/8"],
         correctAnswer: "5/8",
-        explanation:
-          "3/4 = 6/8, dann 6/8 - 1/8 = 5/8.",
+        explanation: "3/4 = 6/8, dann 6/8 - 1/8 = 5/8.",
       },
       {
         id: `${topic}-3`,
         question: "Welcher Bruch ist größer?",
         options: ["5/8", "3/4", "gleich groß", "nicht bestimmbar"],
         correctAnswer: "3/4",
-        explanation:
-          "3/4 = 6/8, also größer als 5/8.",
+        explanation: "3/4 = 6/8, also größer als 5/8.",
       },
       {
         id: `${topic}-4`,
         question: "Wie viel ist 4/5 von 25?",
         options: ["15", "18", "20", "22"],
         correctAnswer: "20",
-        explanation:
-          "25 durch 5 = 5, dann 5 × 4 = 20.",
+        explanation: "25 durch 5 = 5, dann 5 × 4 = 20.",
       },
     ];
   }
@@ -515,32 +485,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
           question: "Löse: x + 4 = 9",
           options: ["4", "5", "6", "7"],
           correctAnswer: "5",
-          explanation:
-            "9 - 4 = 5.",
+          explanation: "9 - 4 = 5.",
         },
         {
           id: `${topic}-2`,
           question: "Löse: x - 3 = 8",
           options: ["9", "10", "11", "12"],
           correctAnswer: "11",
-          explanation:
-            "8 + 3 = 11.",
+          explanation: "8 + 3 = 11.",
         },
         {
           id: `${topic}-3`,
           question: "Löse: 2x = 14",
           options: ["6", "7", "8", "9"],
           correctAnswer: "7",
-          explanation:
-            "Beide Seiten durch 2 teilen.",
+          explanation: "Beide Seiten durch 2 teilen.",
         },
         {
           id: `${topic}-4`,
           question: "Löse: x + 10 = 18",
           options: ["6", "7", "8", "9"],
           correctAnswer: "8",
-          explanation:
-            "18 - 10 = 8.",
+          explanation: "18 - 10 = 8.",
         },
       ];
     }
@@ -552,32 +518,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
           question: "Löse: 3x = 27",
           options: ["7", "8", "9", "10"],
           correctAnswer: "9",
-          explanation:
-            "27 durch 3 = 9.",
+          explanation: "27 durch 3 = 9.",
         },
         {
           id: `${topic}-2`,
           question: "Löse: x + 12 = 31",
           options: ["17", "18", "19", "20"],
           correctAnswer: "19",
-          explanation:
-            "31 - 12 = 19.",
+          explanation: "31 - 12 = 19.",
         },
         {
           id: `${topic}-3`,
           question: "Löse: 2x + 5 = 15",
           options: ["4", "5", "6", "7"],
           correctAnswer: "5",
-          explanation:
-            "Erst 5 abziehen: 10. Dann durch 2 teilen: x = 5.",
+          explanation: "Erst 5 abziehen: 10. Dann durch 2 teilen: x = 5.",
         },
         {
           id: `${topic}-4`,
           question: "Löse: 4x = 36",
           options: ["7", "8", "9", "10"],
           correctAnswer: "9",
-          explanation:
-            "36 durch 4 = 9.",
+          explanation: "36 durch 4 = 9.",
         },
       ];
     }
@@ -588,32 +550,28 @@ function getExercisesForTopic(topic: string, level: 1 | 2 | 3): Exercise[] {
         question: "Löse: 3x + 6 = 24",
         options: ["4", "5", "6", "7"],
         correctAnswer: "6",
-        explanation:
-          "6 abziehen ergibt 18, dann durch 3 teilen: x = 6.",
+        explanation: "6 abziehen ergibt 18, dann durch 3 teilen: x = 6.",
       },
       {
         id: `${topic}-2`,
         question: "Löse: 5x - 10 = 20",
         options: ["4", "5", "6", "7"],
         correctAnswer: "6",
-        explanation:
-          "10 addieren ergibt 30, dann durch 5 teilen: x = 6.",
+        explanation: "10 addieren ergibt 30, dann durch 5 teilen: x = 6.",
       },
       {
         id: `${topic}-3`,
         question: "Löse: 2(x + 3) = 18",
         options: ["5", "6", "7", "8"],
         correctAnswer: "6",
-        explanation:
-          "Beide Seiten durch 2: x + 3 = 9, dann x = 6.",
+        explanation: "Beide Seiten durch 2: x + 3 = 9, dann x = 6.",
       },
       {
         id: `${topic}-4`,
         question: "Löse: 7x = 63",
         options: ["7", "8", "9", "10"],
         correctAnswer: "9",
-        explanation:
-          "63 durch 7 = 9.",
+        explanation: "63 durch 7 = 9.",
       },
     ];
   }
@@ -692,7 +650,7 @@ function getAccuracyWidth(value: number) {
   return `${Math.max(4, Math.round(value * 100))}%`;
 }
 
-export default function LernpfadPage() {
+function LernpfadContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -703,16 +661,14 @@ export default function LernpfadPage() {
   const [saving, setSaving] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-
   const [userId, setUserId] = useState<string | null>(null);
-  const [learningProfile, setLearningProfile] =
-    useState<LearningProfileRow | null>(null);
-  const [diagnosticResult, setDiagnosticResult] =
-    useState<DiagnosticResultRow | null>(null);
+
+  const [learningProfile, setLearningProfile] = useState<LearningProfileRow | null>(null);
+  const [diagnosticResult, setDiagnosticResult] = useState<DiagnosticResultRow | null>(null);
   const [topicLevels, setTopicLevels] = useState<TopicLevelRow[]>([]);
+  const [selectedSession, setSelectedSession] = useState<TrainingScheduleRow | null>(null);
   const [selectedTopicId, setSelectedTopicId] = useState<string>("");
-  const [selectedSession, setSelectedSession] =
-    useState<TrainingScheduleRow | null>(null);
+
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -720,23 +676,20 @@ export default function LernpfadPage() {
     let cancelled = false;
 
     async function loadPage() {
-      setLoading(true);
-      setErrorMessage("");
-      setSuccessMessage("");
-
       try {
+        setLoading(true);
+        setErrorMessage("");
+
         const {
           data: { user },
           error: userError,
         } = await supabase.auth.getUser();
 
+        if (cancelled) return;
+
         if (userError) {
-          if (!cancelled) {
-            setErrorMessage(
-              "Fehler beim Laden des Nutzers: " + userError.message
-            );
-            setLoading(false);
-          }
+          setErrorMessage("Fehler beim Laden des Nutzers: " + userError.message);
+          setLoading(false);
           return;
         }
 
@@ -747,56 +700,49 @@ export default function LernpfadPage() {
 
         setUserId(user.id);
 
-        const [
-          profileResponse,
-          diagnosticResponse,
-          topicResponse,
-          sessionResponse,
-        ] = await Promise.all([
-          supabase
-            .from("LearningProfile")
-            .select(
-              "id, user_id, school_class, age, training_frequency, created_at"
-            )
-            .eq("user_id", user.id)
-            .order("created_at", { ascending: false })
-            .limit(1)
-            .maybeSingle(),
+        const [profileResponse, diagnosticResponse, topicResponse, sessionResponse] =
+          await Promise.all([
+            supabase
+              .from("LearningProfile")
+              .select("id, user_id, school_class, age, training_frequency, created_at")
+              .eq("user_id", user.id)
+              .order("created_at", { ascending: false })
+              .limit(1)
+              .maybeSingle(),
 
-          supabase
-            .from("DiagnosticResult")
-            .select("id, user_id, score, created_at")
-            .eq("user_id", user.id)
-            .order("created_at", { ascending: false })
-            .limit(1)
-            .maybeSingle(),
+            supabase
+              .from("DiagnosticResult")
+              .select("id, user_id, score, created_at")
+              .eq("user_id", user.id)
+              .order("created_at", { ascending: false })
+              .limit(1)
+              .maybeSingle(),
 
-          supabase
-            .from("TopicLevel")
-            .select(
-              "id, user_id, category, level, total_answered, total_correct, accuracy, last_practiced_at, created_at, updated_at"
-            )
-            .eq("user_id", user.id)
-            .order("level", { ascending: true }),
+            supabase
+              .from("TopicLevel")
+              .select(
+                "id, user_id, category, level, total_answered, total_correct, accuracy, last_practiced_at, created_at, updated_at"
+              )
+              .eq("user_id", user.id)
+              .order("level", { ascending: true }),
 
-          sessionId
-            ? supabase
-                .from("TrainingSchedule")
-                .select(
-                  "id, user_id, date, weekday_label, completed, completed_at, score_percent"
-                )
-                .eq("id", sessionId)
-                .eq("user_id", user.id)
-                .maybeSingle()
-            : Promise.resolve({ data: null, error: null }),
-        ]);
+            sessionId
+              ? supabase
+                  .from("TrainingSchedule")
+                  .select(
+                    "id, user_id, date, weekday_label, completed, completed_at, score_percent"
+                  )
+                  .eq("id", sessionId)
+                  .eq("user_id", user.id)
+                  .maybeSingle()
+              : Promise.resolve({ data: null, error: null }),
+          ]);
 
         if (cancelled) return;
 
         if (profileResponse.error) {
           setErrorMessage(
-            "Fehler beim Laden des Lernprofils: " +
-              profileResponse.error.message
+            "Fehler beim Laden des Lernprofils: " + profileResponse.error.message
           );
           setLoading(false);
           return;
@@ -804,8 +750,7 @@ export default function LernpfadPage() {
 
         if (diagnosticResponse.error) {
           setErrorMessage(
-            "Fehler beim Laden des Ausgangstests: " +
-              diagnosticResponse.error.message
+            "Fehler beim Laden des Ausgangstests: " + diagnosticResponse.error.message
           );
           setLoading(false);
           return;
@@ -821,8 +766,7 @@ export default function LernpfadPage() {
 
         if (sessionResponse?.error) {
           setErrorMessage(
-            "Fehler beim Laden der Trainingseinheit: " +
-              sessionResponse.error.message
+            "Fehler beim Laden der Trainingseinheit: " + sessionResponse.error.message
           );
           setLoading(false);
           return;
@@ -856,8 +800,7 @@ export default function LernpfadPage() {
         let initialTopic: TopicLevelRow | null = null;
 
         if (focusTopic) {
-          initialTopic =
-            topics.find((topic) => topic.category === focusTopic) ?? null;
+          initialTopic = topics.find((topic) => topic.category === focusTopic) ?? null;
         }
 
         if (!initialTopic && session && !session.completed) {
@@ -988,12 +931,9 @@ export default function LernpfadPage() {
     setSaving(true);
 
     try {
-      const newTotalAnswered =
-        (selectedTopic.total_answered ?? 0) + resultData.total;
-      const newTotalCorrect =
-        (selectedTopic.total_correct ?? 0) + resultData.correct;
-      const newAccuracy =
-        newTotalAnswered > 0 ? newTotalCorrect / newTotalAnswered : 0;
+      const newTotalAnswered = (selectedTopic.total_answered ?? 0) + resultData.total;
+      const newTotalCorrect = (selectedTopic.total_correct ?? 0) + resultData.correct;
+      const newAccuracy = newTotalAnswered > 0 ? newTotalCorrect / newTotalAnswered : 0;
 
       let nextLevel: 1 | 2 | 3 = selectedTopic.level;
 
@@ -1143,9 +1083,7 @@ export default function LernpfadPage() {
                   <p className="text-xs uppercase tracking-wide text-gray-400">
                     Aufgaben
                   </p>
-                  <p className="mt-2 text-lg font-semibold">
-                    {exercises.length}
-                  </p>
+                  <p className="mt-2 text-lg font-semibold">{exercises.length}</p>
                 </div>
 
                 <div className="rounded-2xl bg-white/10 p-4">
@@ -1270,9 +1208,7 @@ export default function LernpfadPage() {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="text-lg font-semibold">
-                            {topic.category}
-                          </h3>
+                          <h3 className="text-lg font-semibold">{topic.category}</h3>
 
                           {isPriority && (
                             <span
@@ -1427,9 +1363,7 @@ export default function LernpfadPage() {
 
                           {!isCorrect && exercise.mistakeTip && (
                             <p className="mt-2">
-                              <span className="font-semibold">
-                                Typischer Fehler:
-                              </span>{" "}
+                              <span className="font-semibold">Typischer Fehler:</span>{" "}
                               {exercise.mistakeTip}
                             </p>
                           )}
@@ -1568,5 +1502,13 @@ export default function LernpfadPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function LernpfadPage() {
+  return (
+    <Suspense fallback={<div className="p-6">Lade...</div>}>
+      <LernpfadContent />
+    </Suspense>
   );
 }
